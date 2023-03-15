@@ -3,6 +3,7 @@
 from typing import Union
 from pydantic import BaseModel
 from fastapi import FastAPI
+from fuzzy import fuzzy_cal
 
 class Happiness_Points(BaseModel):
     self_hp: int
@@ -24,5 +25,5 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.get("/v1/fuzzy/")
 def test_fuzzy(hp: Happiness_Points):
-    result = hp.self_hp + hp.work_hp + hp.co_worker_hp
+    result = fuzzy_cal(hp.self_hp, hp.work_hp, hp.co_worker_hp)
     return {"value": result}

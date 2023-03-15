@@ -16,4 +16,10 @@ sh init-project.sh
 source venv.sh
 ```
 
+and to start server, simply run
+
+```bash
+uvicorn main:app --reload
+```
+
 and that's it, have fun coding!
